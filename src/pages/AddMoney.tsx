@@ -15,7 +15,12 @@ const QUICK_AMOUNTS = [1000, 5000, 10000, 20000, 50000];
 
 const PAYSTACK_KEY = import.meta.env.VITE_PAYSTACK_PUBLIC_KEY || "";
 
-function PayButton({ amount, email, onSuccess, disabled }: {
+function PayButton({
+  amount,
+  email,
+  onSuccess,
+  disabled,
+}: {
   amount: number;
   email: string;
   onSuccess: (ref: string) => void;
@@ -33,7 +38,9 @@ function PayButton({ amount, email, onSuccess, disabled }: {
 
   const handleClick = () => {
     if (!PAYSTACK_KEY) {
-      toast.error("Paystack is not configured. Add VITE_PAYSTACK_PUBLIC_KEY to your .env file.");
+      toast.error(
+        "Paystack is not configured. Add VITE_PAYSTACK_PUBLIC_KEY to your .env file.",
+      );
       return;
     }
     initializePayment({
@@ -82,7 +89,7 @@ export default function AddMoney() {
       const verifiedAmount = data.amount || numAmount;
 
       await refresh();
-      
+
       const formatted = new Intl.NumberFormat("en-NG", {
         style: "currency",
         currency: "NGN",
@@ -90,7 +97,7 @@ export default function AddMoney() {
       }).format(verifiedAmount);
 
       toast.success(`${formatted} added to your wallet!`);
-      
+
       navigate("/success", {
         state: {
           amount: verifiedAmount,
@@ -222,16 +229,18 @@ export default function AddMoney() {
           {/* Payment method */}
           <div
             className={ANIM.fadeInUp}
-            style={{
-              "--delay": "80ms",
-              background: C.surface1,
-              border: `1px solid ${C.outlineVar}`,
-              borderRadius: 16,
-              padding: "16px",
-              display: "flex",
-              alignItems: "center",
-              gap: 16,
-            } as React.CSSProperties}
+            style={
+              {
+                "--delay": "80ms",
+                background: C.surface1,
+                border: `1px solid ${C.outlineVar}`,
+                borderRadius: 16,
+                padding: "16px",
+                display: "flex",
+                alignItems: "center",
+                gap: 16,
+              } as React.CSSProperties
+            }
           >
             <div
               style={{
@@ -271,16 +280,16 @@ export default function AddMoney() {
         {/* Bottom pinned button area */}
         <div
           className={ANIM.fadeInUp}
-          style={{
-            "--delay": "160ms",
-            paddingTop: 24,
-            paddingBottom: 24,
-          } as React.CSSProperties}
+          style={
+            {
+              "--delay": "160ms",
+              paddingTop: 24,
+              paddingBottom: 24,
+            } as React.CSSProperties
+          }
         >
           {processing ? (
-            <GoldButton disabled>
-              Processing...
-            </GoldButton>
+            <GoldButton disabled>Processing...</GoldButton>
           ) : (
             <PayButton
               amount={numAmount}
