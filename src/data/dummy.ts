@@ -1,0 +1,81 @@
+import type { Transaction } from "../types";
+
+export const DUMMY_TRANSACTIONS: Transaction[] = [
+  {
+    id: "1",
+    wallet_id: "w1",
+    user_id: "u1",
+    type: "credit",
+    icon: "fund",
+    label: "Wallet Funded",
+    amount: 20000,
+    fee: 0,
+    reference: "ref1",
+    created_at: new Date().toISOString(),
+  },
+  {
+    id: "2",
+    wallet_id: "w1",
+    user_id: "u1",
+    type: "debit",
+    icon: "send",
+    label: "Sent to @chidi_k",
+    amount: 5000,
+    fee: 0,
+    reference: "ref2",
+    recipient_tag: "@chidi_k",
+    created_at: new Date(Date.now() - 86400000).toISOString(),
+  },
+  {
+    id: "3",
+    wallet_id: "w1",
+    user_id: "u1",
+    type: "credit",
+    icon: "receive",
+    label: "Received from @ada_pay",
+    amount: 10000,
+    fee: 0,
+    reference: "ref3",
+    created_at: new Date(Date.now() - 86400000).toISOString(),
+  },
+  {
+    id: "4",
+    wallet_id: "w1",
+    user_id: "u1",
+    type: "debit",
+    icon: "airtime",
+    label: "Airtime Purchase",
+    amount: 1000,
+    fee: 0,
+    reference: "ref4",
+    created_at: new Date(Date.now() - 172800000).toISOString(),
+  },
+  {
+    id: "5",
+    wallet_id: "w1",
+    user_id: "u1",
+    type: "credit",
+    icon: "receive",
+    label: "Received from @emeka_x",
+    amount: 8000,
+    fee: 0,
+    reference: "ref5",
+    created_at: new Date(Date.now() - 259200000).toISOString(),
+  },
+];
+
+export const DUMMY_USER = {
+  id: "u1",
+  email: "valentine@padipay.com",
+  full_name: "Valentine Azolibe",
+  username: "val_padi",
+  created_at: new Date().toISOString(),
+};
+
+export const DUMMY_WALLET = {
+  id: "w1",
+  user_id: "u1",
+  balance: 48250,
+  currency: "NGN",
+  updated_at: new Date().toISOString(),
+};
